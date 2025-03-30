@@ -1,3 +1,10 @@
+---
+import "../styles/global.css"
+import { VisualEditing } from "@sanity/astro/visual-editing"
+
+const isVisualEditingEnabled = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == "true"
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -9,6 +16,7 @@
 	</head>
 	<body>
 		<slot />
+		<VisualEditing enabled={isVisualEditingEnabled} />
 	</body>
 </html>
 

@@ -1,0 +1,18 @@
+---
+import { urlForImage } from "../sanity/services/url-for-image"
+import type { SanityAsset } from "@sanity/image-url/lib/types/types"
+import { Picture } from "astro:assets"
+
+type Props = {
+	node: {
+		asset: SanityAsset
+		alt: string
+	}
+}
+
+const { asset, alt } = Astro.props.node
+
+const url = urlForImage(asset).url()
+---
+
+<Picture src={url} alt={alt} formats={["webp", "png"]} fallbackFormat="png" widths={[320, 640, 960, 1200]} />
